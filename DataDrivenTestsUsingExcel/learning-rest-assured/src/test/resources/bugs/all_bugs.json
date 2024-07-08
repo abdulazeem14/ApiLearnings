@@ -1,0 +1,30 @@
+[
+  {
+    "createdBy": "Jack Farley",
+    "priority": 3,
+    "severity": "low",
+    "title": "Page does not render correctly",
+    "completed": false
+  },
+  {
+    "createdBy": "Susan Hill",
+    "priority": 2,
+    "severity": "high",
+    "title": "Login functionality broken on mobile",
+    "completed": false
+  },
+  {
+    "createdBy": "Mohamed Ali",
+    "priority": 1,
+    "severity": "medium",
+    "title": "Email notifications delayed",
+    "completed": false
+  },
+  {
+    "createdBy": "Linda Kim",
+    "priority": 2,
+    "severity": "high",
+    "title": "User login fails under heavy load",
+    "completed": true
+  }
+]

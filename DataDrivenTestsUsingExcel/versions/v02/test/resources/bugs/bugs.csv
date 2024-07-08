@@ -1,0 +1,6 @@
+createdBy,priority,severity,title,completed
+Amina Zahra,1,high,Login page fails,false
+Carlos Mendez,2,medium,Profile page loads slowly,true
+Yuki Takahashi,3,low,Search functionality missing,false
+Fatima Al-Fihri,2,high,Email notifications delayed,true
+Dmitri Ivanov,1,critical,Data export fails,false

@@ -1,0 +1,44 @@
+name: Java CI with Maven for Bug API tests
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Test Execution
+      run: mvn -B -f pom.xml clean test
+    - name: Find latest modified report
+      id: find-latest-report
+      run: |
+        latest_report=$(ls -t reports/* | head -n1)
+        echo "::set-output name=latest_report::$latest_report"
+    - name: Upload Latest Modified Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: latest-report
+        path: ${{ steps.find-latest-report.outputs.latest_report }}
+    - name: Send Email
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.EMAIL_SERVER_ADDRESS }}
+        server_port: ${{ secrets.EMAIL_SERVER_PORT }}
+        secure: true
+        username: ${{ secrets.EMAIL_ADDRESS }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: Github Actions job result
+        to: cloud.user@loonycorn.com
+        from: Loonycorn
+        body: All the tests for ${{github.repository}} are completed!
+        attachments: ${{ steps.find-latest-report.outputs.latest_report }}

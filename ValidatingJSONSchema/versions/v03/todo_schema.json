@@ -1,0 +1,35 @@
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://example.com/todos_schema.json",
+  "title": "Todo",
+  "description": "A todo in the app",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 200
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 2000
+    },
+    "completed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "userId",
+    "id",
+    "title",
+    "completed"
+  ],
+  "additionalProperties": false
+}
